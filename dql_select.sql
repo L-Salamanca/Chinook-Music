@@ -105,16 +105,6 @@ WHERE i.InvoiceDate >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 GROUP BY e.EmployeeId
 ORDER BY VentasTotales DESC;
 
-SELECT AVG(d.Descuento) AS DescuentoPromedio
-FROM (SELECT c.CustomerId, SUM(i.Total) AS TotalGastado, 
-             CASE WHEN SUM(i.Total) > 1000 THEN 0.10 
-                  WHEN SUM(i.Total) > 500 THEN 0.05 
-                  ELSE 0 END AS Descuento
-      FROM Customer c
-      JOIN Invoice i ON c.CustomerId = i.CustomerId
-      GROUP BY c.CustomerId
-      HAVING TotalGastado > 500) d;
-
 SELECT c.FirstName, c.LastName, COUNT(il.TrackId) AS CancionesCompradas
 FROM Customer c
 JOIN Invoice i ON c.CustomerId = i.CustomerId
