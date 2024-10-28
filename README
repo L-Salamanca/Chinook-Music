@@ -2,7 +2,10 @@
 
 ## Descripción
 
-Este proyecto es una base de datos enfocada al mundo de la musica, cuenta con canciones, artistas, albumes entre otras entidades y atributos que ayudan al desarrollo del sistema general el cual tiene como objetivo segmentar la simulaciòn de una base de datos de un servicio de streaming musical, contiene consultas, triggers y eventos para filtrar los resultados. Ayuda a los usuarios a hacerse una idea general de como se maneja una base de datos sin manejar datos reales.
+Este proyecto es una base de datos enfocada al mundo de la musica, cuenta con canciones, artistas, albumes entre otras entidades
+y atributos que ayudan al desarrollo del sistema general el cual tiene como objetivo segmentar la simulaciòn de una base de datos 
+de un servicio de streaming musical, contiene consultas, triggers y eventos para filtrar los resultados. Ayuda a los usuarios a hacerse
+una idea general de como se maneja una base de datos sin manejar datos reales.
 
 
 ## Requisitos del sistema
