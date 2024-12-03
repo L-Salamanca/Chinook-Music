@@ -1,223 +1,103 @@
-# Chinook Music
+# 🎶 **Chinook Music - Base de Datos Musical**  
 
-## Descripción
+Una simulación de una base de datos de servicio de streaming musical, diseñada para gestionar información sobre artistas, álbumes, canciones y más. El proyecto incluye consultas, triggers y eventos para proporcionar una visión integral de cómo funcionan las bases de datos relacionales en un entorno realista.  
 
-Este proyecto es una base de datos enfocada al mundo de la musica, cuenta con canciones, artistas, albumes entre otras entidades y atributos que ayudan al desarrollo del sistema general el cual tiene como objetivo segmentar la simulaciòn de una base de datos de un servicio de streaming musical, contiene consultas, triggers y eventos para filtrar los resultados. Ayuda a los usuarios a hacerse una idea general de como se maneja una base de datos sin manejar datos reales.
+---
 
-## Diagrama 
+## 📌 **Descripción General**  
 
-![alt text](Diagrama.png)
+**Chinook Music** es un sistema de base de datos enfocado en el mundo de la música. Permite administrar datos de canciones, artistas, álbumes y clientes, emulando la funcionalidad de un servicio de streaming. Este proyecto es ideal para quienes desean comprender el funcionamiento de bases de datos SQL, realizar consultas complejas y gestionar eventos.  
 
-## Requisitos del sistema
+---
 
-* Es necesario contar con un sistema operativo compatible con MySQL
-* Cuenta con soporte a Linux, Mac y Windows
-* Se opera por medio de MySQL Workbench
+## 🗂️ **Características Principales**  
 
-## Instalaciòn y configuraciòn
+- **Gestión de Entidades Clave:**  
+  - Artistas, álbumes, canciones, clientes, facturas, empleados, géneros y listas de reproducción.  
+- **Consultas DQL:**  
+  - Realización de consultas avanzadas para filtrar y visualizar datos.  
+- **Triggers y Eventos:**  
+  - Automatización de procesos y validación de datos.  
+- **Almacenamiento en MySQL:**  
+  - Datos persistentes, con tablas bien estructuradas y relaciones definidas.  
 
-1. Descargue los archivos del repostorio
-2. Abra MySQL Workbench
-3. Cargue el archivo dml.sql
-4. Repita el proceso con los demàs archivos
-5. Para ejecutar las consultas, funciones, eventos y triggers hacer click en el icono del rayo arriba a la izquierda
-6. Altere los datos y consultas para encontrar diferentes resultados
+---
 
-## Archivos
+## 📋 **Requisitos del Sistema**  
 
-* ddl.sql (Creación de base de datos con tablas y relaciones)
-* dml.sql (inserciones de datos)
-* dql_select.sql (Consultas)
-* dql_funciones.sql (funciones)
-* dql_triggers.sql (triggers)
-* dql_eventos.sql (eventos)
-* Readme.md
-* Diagrama.jpg (Modelo de datos)
+- **Sistema Operativo:** Compatible con Linux, macOS y Windows.  
+- **Base de Datos:** MySQL 8.0 o superior.  
+- **Herramienta:** MySQL Workbench para gestión visual.  
 
-## Autor
+---
 
-Proyecto realizado por Luis Fernando Pèrez Salamanca
+## ⚙️ **Instalación y Configuración**  
 
-## Estructura 
+1. **Descargar el Proyecto:**  
+   ```bash  
+   git clone https://github.com/tu-repositorio.git  
+   cd chinook-music  
+   ```  
 
-DROP DATABASE IF EXISTS `Chinook`;
-CREATE DATABASE `Chinook`;
-USE `Chinook`;
+2. **Abrir en MySQL Workbench:**  
+   - Cargue los archivos `.sql` en MySQL Workbench.  
 
-CREATE TABLE `Album`
-(
-    `AlbumId` INT NOT NULL,
-    `Title` NVARCHAR(160) NOT NULL,
-    `ArtistId` INT NOT NULL,
-    CONSTRAINT `PK_Album` PRIMARY KEY  (`AlbumId`)
-);
+3. **Importar los Archivos:**  
+   - Primero, ejecute `ddl.sql` para crear la estructura de la base de datos.  
+   - Luego, importe `dml.sql` para insertar los datos.  
+   - Cargue y ejecute los demás archivos según sea necesario (`dql_select.sql`, `dql_triggers.sql`, etc.).  
 
-CREATE TABLE `Artist`
-(
-    `ArtistId` INT NOT NULL,
-    `Name` NVARCHAR(120),
-    CONSTRAINT `PK_Artist` PRIMARY KEY  (`ArtistId`)
-);
+4. **Ejecutar Consultas:**  
+   - Seleccione una consulta y haga clic en el icono del rayo (⚡) para ejecutarla.  
 
-CREATE TABLE `Customer`
-(
-    `CustomerId` INT NOT NULL,
-    `FirstName` NVARCHAR(40) NOT NULL,
-    `LastName` NVARCHAR(20) NOT NULL,
-    `Company` NVARCHAR(80),
-    `Address` NVARCHAR(70),
-    `City` NVARCHAR(40),
-    `State` NVARCHAR(40),
-    `Country` NVARCHAR(40),
-    `PostalCode` NVARCHAR(10),
-    `Phone` NVARCHAR(24),
-    `Fax` NVARCHAR(24),
-    `Email` NVARCHAR(60) NOT NULL,
-    `SupportRepId` INT,
-    CONSTRAINT `PK_Customer` PRIMARY KEY  (`CustomerId`)
-);
+---
 
-CREATE TABLE `Employee`
-(
-    `EmployeeId` INT NOT NULL,
-    `LastName` NVARCHAR(20) NOT NULL,
-    `FirstName` NVARCHAR(20) NOT NULL,
-    `Title` NVARCHAR(30),
-    `ReportsTo` INT,
-    `BirthDate` DATETIME,
-    `HireDate` DATETIME,
-    `Address` NVARCHAR(70),
-    `City` NVARCHAR(40),
-    `State` NVARCHAR(40),
-    `Country` NVARCHAR(40),
-    `PostalCode` NVARCHAR(10),
-    `Phone` NVARCHAR(24),
-    `Fax` NVARCHAR(24),
-    `Email` NVARCHAR(60),
-    CONSTRAINT `PK_Employee` PRIMARY KEY  (`EmployeeId`)
-);
+## 📂 **Archivos Incluidos**  
 
-CREATE TABLE `Genre`
-(
-    `GenreId` INT NOT NULL,
-    `Name` NVARCHAR(120),
-    CONSTRAINT `PK_Genre` PRIMARY KEY  (`GenreId`)
-);
+- **ddl.sql:** Definición de tablas y relaciones (estructura de la base de datos).  
+- **dml.sql:** Inserción de datos iniciales (población de tablas).  
+- **dql_select.sql:** Consultas DQL (SELECT) para filtrar y mostrar datos.  
+- **dql_funciones.sql:** Funciones almacenadas para operaciones comunes.  
+- **dql_triggers.sql:** Triggers para automatizar la gestión de datos.  
+- **dql_eventos.sql:** Eventos programados para la base de datos.  
+- **Diagrama.png:** Diagrama entidad-relación de la base de datos.  
+- **Readme.md:** Documentación del proyecto.  
 
-CREATE TABLE `Invoice`
-(
-    `InvoiceId` INT NOT NULL,
-    `CustomerId` INT NOT NULL,
-    `InvoiceDate` DATETIME NOT NULL,
-    `BillingAddress` NVARCHAR(70),
-    `BillingCity` NVARCHAR(40),
-    `BillingState` NVARCHAR(40),
-    `BillingCountry` NVARCHAR(40),
-    `BillingPostalCode` NVARCHAR(10),
-    `Total` NUMERIC(10,2) NOT NULL,
-    CONSTRAINT `PK_Invoice` PRIMARY KEY  (`InvoiceId`)
-);
+---
 
-CREATE TABLE `InvoiceLine`
-(
-    `InvoiceLineId` INT NOT NULL,
-    `InvoiceId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
-    `UnitPrice` NUMERIC(10,2) NOT NULL,
-    `Quantity` INT NOT NULL,
-    CONSTRAINT `PK_InvoiceLine` PRIMARY KEY  (`InvoiceLineId`)
-);
+## 📊 **Estructura de la Base de Datos**  
 
-CREATE TABLE `MediaType`
-(
-    `MediaTypeId` INT NOT NULL,
-    `Name` NVARCHAR(120),
-    CONSTRAINT `PK_MediaType` PRIMARY KEY  (`MediaTypeId`)
-);
+El proyecto incluye las siguientes tablas:  
 
-CREATE TABLE `Playlist`
-(
-    `PlaylistId` INT NOT NULL,
-    `Name` NVARCHAR(120),
-    CONSTRAINT `PK_Playlist` PRIMARY KEY  (`PlaylistId`)
-);
+- **Album:** Información de los álbumes (ID, título, artista).  
+- **Artist:** Datos de artistas (ID, nombre).  
+- **Customer:** Información de clientes (datos personales, soporte).  
+- **Employee:** Datos del personal (jerarquía, contacto).  
+- **Genre:** Clasificación de géneros musicales.  
+- **Invoice:** Facturas generadas para clientes.  
+- **InvoiceLine:** Detalles de cada línea de factura (canciones compradas).  
+- **MediaType:** Tipos de medios disponibles.  
+- **Playlist:** Listas de reproducción creadas.  
+- **PlaylistTrack:** Relación entre listas de reproducción y canciones.  
+- **Track:** Información detallada de cada canción.  
 
-CREATE TABLE `PlaylistTrack`
-(
-    `PlaylistId` INT NOT NULL,
-    `TrackId` INT NOT NULL,
-    CONSTRAINT `PK_PlaylistTrack` PRIMARY KEY  (`PlaylistId`, `TrackId`)
-);
+---
 
-CREATE TABLE `Track`
-(
-    `TrackId` INT NOT NULL,
-    `Name` NVARCHAR(200) NOT NULL,
-    `AlbumId` INT,
-    `MediaTypeId` INT NOT NULL,
-    `GenreId` INT,
-    `Composer` NVARCHAR(220),
-    `Milliseconds` INT NOT NULL,
-    `Bytes` INT,
-    `UnitPrice` NUMERIC(10,2) NOT NULL,
-    CONSTRAINT `PK_Track` PRIMARY KEY  (`TrackId`)
-);
+## 💻 **Uso del Proyecto**  
 
-ALTER TABLE `Album` ADD CONSTRAINT `FK_AlbumArtistId`
-    FOREIGN KEY (`ArtistId`) REFERENCES `Artist` (`ArtistId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+- **Pruebas de Consultas:**  
+  - Ejecute las consultas para observar la interacción entre tablas.  
+- **Modificación de Datos:**  
+  - Altere y manipule registros para experimentar con triggers y eventos.  
+- **Análisis de Resultados:**  
+  - Utilice las consultas para extraer información significativa sobre álbumes, artistas y ventas.  
 
-CREATE INDEX `IFK_AlbumArtistId` ON `Album` (`ArtistId`);
+---
 
-ALTER TABLE `Customer` ADD CONSTRAINT `FK_CustomerSupportRepId`
-    FOREIGN KEY (`SupportRepId`) REFERENCES `Employee` (`EmployeeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+## 👨‍💻 **Autor**  
 
-CREATE INDEX `IFK_CustomerSupportRepId` ON `Customer` (`SupportRepId`);
+Proyecto desarrollado por **Luis Fernando Pérez Salamanca**.  
 
-ALTER TABLE `Employee` ADD CONSTRAINT `FK_EmployeeReportsTo`
-    FOREIGN KEY (`ReportsTo`) REFERENCES `Employee` (`EmployeeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_EmployeeReportsTo` ON `Employee` (`ReportsTo`);
-
-ALTER TABLE `Invoice` ADD CONSTRAINT `FK_InvoiceCustomerId`
-    FOREIGN KEY (`CustomerId`) REFERENCES `Customer` (`CustomerId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_InvoiceCustomerId` ON `Invoice` (`CustomerId`);
-
-ALTER TABLE `InvoiceLine` ADD CONSTRAINT `FK_InvoiceLineInvoiceId`
-    FOREIGN KEY (`InvoiceId`) REFERENCES `Invoice` (`InvoiceId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_InvoiceLineInvoiceId` ON `InvoiceLine` (`InvoiceId`);
-
-ALTER TABLE `InvoiceLine` ADD CONSTRAINT `FK_InvoiceLineTrackId`
-    FOREIGN KEY (`TrackId`) REFERENCES `Track` (`TrackId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_InvoiceLineTrackId` ON `InvoiceLine` (`TrackId`);
-
-ALTER TABLE `PlaylistTrack` ADD CONSTRAINT `FK_PlaylistTrackPlaylistId`
-    FOREIGN KEY (`PlaylistId`) REFERENCES `Playlist` (`PlaylistId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_PlaylistTrackPlaylistId` ON `PlaylistTrack` (`PlaylistId`);
-
-ALTER TABLE `PlaylistTrack` ADD CONSTRAINT `FK_PlaylistTrackTrackId`
-    FOREIGN KEY (`TrackId`) REFERENCES `Track` (`TrackId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_PlaylistTrackTrackId` ON `PlaylistTrack` (`TrackId`);
-
-ALTER TABLE `Track` ADD CONSTRAINT `FK_TrackAlbumId`
-    FOREIGN KEY (`AlbumId`) REFERENCES `Album` (`AlbumId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_TrackAlbumId` ON `Track` (`AlbumId`);
-
-ALTER TABLE `Track` ADD CONSTRAINT `FK_TrackGenreId`
-    FOREIGN KEY (`GenreId`) REFERENCES `Genre` (`GenreId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_TrackGenreId` ON `Track` (`GenreId`);
-
-ALTER TABLE `Track` ADD CONSTRAINT `FK_TrackMediaTypeId`
-    FOREIGN KEY (`MediaTypeId`) REFERENCES `MediaType` (`MediaTypeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX `IFK_TrackMediaTypeId` ON `Track` (`MediaTypeId`);
-
-
+---
 
 
